@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  strapi:
+    image: strapi/strapi
+    restart: always
+    environment:
+      - DATABASE_CLIENT
+      - DATABASE_NAME
+      - DATABASE_HOST
+      - DATABASE_PORT
+      - DATABASE_USERNAME
+      - DATABASE_PASSWORD
+    ports:
+      - 1337:1337
+    networks:
+      - root_default
+
+networks:
+  root_default:
+    external: true
