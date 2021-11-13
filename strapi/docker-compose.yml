@@ -16,9 +16,6 @@ services:
       - VIRTUAL_HOST
       - LETSENCRYPT_HOST=${VIRTUAL_HOST}
       - VIRTUAL_PORT=1337
-    volumes:
-      - ./app:/srv/app
-    command: strapi start
     networks:
       - root_default
 
