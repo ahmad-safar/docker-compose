@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.9"
 
 services:
   strapi:
@@ -6,6 +6,7 @@ services:
     restart: always
     environment:
       - NODE_ENV=production
+      - NODE_OPTIONS=--max_old_space_size=2048
       - DATABASE_CLIENT
       - DATABASE_NAME
       - DATABASE_HOST
@@ -15,10 +16,9 @@ services:
       - VIRTUAL_HOST
       - LETSENCRYPT_HOST=${VIRTUAL_HOST}
       - VIRTUAL_PORT=1337
-      - NODE_OPTIONS=--max_old_space_size=2048
     volumes:
       - ./app:/srv/app
-    command: strapi build && strapi start
+    command: strapi start
     networks:
       - root_default
 
